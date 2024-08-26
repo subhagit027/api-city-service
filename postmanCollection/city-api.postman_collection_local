@@ -13,16 +13,39 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api-city-service-qtcn.onrender.com/api/cities",
-					"protocol": "https",
+					"raw": "http://localhost:3000/api/cities?page=1&limit=10&filter={\"country\":\"USA\"}",
+					"protocol": "http",
 					"host": [
-						"api-city-service-qtcn",
-						"onrender",
-						"com"
+						"localhost"
 					],
+					"port": "3000",
 					"path": [
 						"api",
 						"cities"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "search",
+							"value": "ka",
+							"disabled": true
+						},
+						{
+							"key": "projection",
+							"value": "country, name",
+							"disabled": true
+						},
+						{
+							"key": "filter",
+							"value": "{\"country\":\"USA\"}"
+						}
 					]
 				}
 			},
@@ -35,7 +58,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"Hydrabad\",\r\n    \"population\" : 12234234523,\r\n    \"country\" : \"India\",\r\n    \"latitude\": 123.2412,\r\n    \"longitude\": 132.124\r\n}",
+					"raw": "{\r\n    \"name\":\"New York\",\r\n    \"population\" : 12234234523,\r\n    \"country\" : \"USA\",\r\n    \"latitude\": 123.2412,\r\n    \"longitude\": 132.124\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -43,13 +66,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://api-city-service-qtcn.onrender.com/api/cities",
-					"protocol": "https",
+					"raw": "http://localhost:3000/api/cities",
+					"protocol": "http",
 					"host": [
-						"api-city-service-qtcn",
-						"onrender",
-						"com"
+						"localhost"
 					],
+					"port": "3000",
 					"path": [
 						"api",
 						"cities"
@@ -73,13 +95,12 @@
 					}
 				},
 				"url": {
-					"raw": "https://api-city-service-qtcn.onrender.com/api/cities/66cca48769779b1187377cf0",
-					"protocol": "https",
+					"raw": "http://localhost:3000/api/cities/66cca48769779b1187377cf0",
+					"protocol": "http",
 					"host": [
-						"api-city-service-qtcn",
-						"onrender",
-						"com"
+						"localhost"
 					],
+					"port": "3000",
 					"path": [
 						"api",
 						"cities",
@@ -95,13 +116,12 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://api-city-service-qtcn.onrender.com/api/cities/66cca48769779b1187377cf0",
-					"protocol": "https",
+					"raw": "http://localhost:3000/api/cities/66cca48769779b1187377cf0",
+					"protocol": "http",
 					"host": [
-						"api-city-service-qtcn",
-						"onrender",
-						"com"
+						"localhost"
 					],
+					"port": "3000",
 					"path": [
 						"api",
 						"cities",

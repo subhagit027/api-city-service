@@ -22,14 +22,30 @@ exports.addCity = [cityValidator.validateCity, cityValidator.handleValidationErr
 
 exports.getCities = async (req, res) => {
   try {
-    const { page = 1, limit = 10, sort = 'name', filter = {} } = req.query;
-
-    const cities = await City.find(filter)
+    const { page = 1, limit = 10, sort = 'name', filter = '{}', search='', projection = ''} = req.query;
+    const projectionFields = projection.split(',').join(' ');
+    const filterCriteria = JSON.parse(filter);
+    const searchCriteria = search
+      ? { name: { $regex: search, $options: 'i' } }
+      : {};
+    const criteria = { ...filterCriteria, ...searchCriteria };
+    const cities = await City.find(criteria)
       .sort(sort)
       .skip((page - 1) * limit)
-      .limit(Number(limit));
+      .limit(Number(limit))
+      .select(projectionFields);
 
-    res.status(200).json(cities);
+      const totalCities = await City.countDocuments(criteria);
+
+    res.status(200).json({
+      cities,
+      pagination: {
+        page: page,
+        limit: limit,
+        totalCities,
+        totalPages: Math.ceil(totalCities / limit)
+      }
+    });
   } catch (err) {
     res.status(500).json({ message: 'Error fetching cities', error: err.message });
   }
